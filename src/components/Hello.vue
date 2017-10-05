@@ -12,6 +12,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   import Card from './Card';
 
   export default {
@@ -20,53 +21,13 @@
       Card,
     },
     mounted() {
-      // Fake GET request
-      this.cards = [
-        {
-          gifurl: 'http://tclhost.com/bxRvNRA.gif',
-          title: 'When the senior developer meets the new guy',
-        },
-        {
-          gifurl: 'http://tclhost.com/F7GSdyO.gif',
-          title: 'Easy workaround vs correct implementation',
-        },
-        {
-          gifurl: 'http://tclhost.com/hBBTrnd.gif',
-          title: 'When they tell me we have to rewrite the entire app to make it mobile-friendly',
-        },
-        {
-          gifurl: 'http://tclhost.com/10RB6RG.gif',
-          title: 'After an all night coding session',
-        },
-        {
-          gifurl: 'http://tclhost.com/SEFNMY7.gif',
-          title: 'How I imagine previous programmers who built the system on which I\u2019m currently working',
-        },
-        {
-          gifurl: 'http://tclhost.com/usBraPq.gif',
-          title: 'Opening and launching a very old project of mine',
-        },
-        {
-          gifurl: 'http://tclhost.com/nyzsQKk.gif',
-          title: 'After giving my project to QA for testing',
-        },
-        {
-          gifurl: 'http://tclhost.com/MEV3bSv.gif',
-          title: 'Testing live on production',
-        },
-        {
-          gifurl: 'http://tclhost.com/27De20k.gif',
-          title: 'When a senior developer remembers his time writing COBOL',
-        },
-        {
-          gifurl: 'http://tclhost.com/NAnyq7x.gif',
-          title: 'When all tests pass, except the very last one.',
-        },
-        {
-          gifurl: 'http://tclhost.com/ON56qsr.gif',
-          title: 'When I see a merge request without any conflict',
-        },
-      ];
+      axios.get( 'https://vue-workshop-ufv.firebaseio.com/data.json' )
+        .then( ( response ) => {
+          this.cards = response.data;
+        } )
+        .catch( ( e ) => {
+          console.debug( e );
+        } );
     },
     data() {
       return {
@@ -79,21 +40,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+  .hello {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
 </style>

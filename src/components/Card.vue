@@ -24,5 +24,18 @@
 
 
 <style>
+  .card {
+    width: 100%;
+    transition: box-shadow 0.15s linear;
+  }
 
+  .card:hover {
+    box-shadow: 0 0 6px 4px #dadada;
+  }
+
+  .card .card-body-img {
+    min-height: 10rem;
+    background-position: center;
+    background-size: cover;
+  }
 </style>
