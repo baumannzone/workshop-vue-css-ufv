@@ -1,14 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <my-header></my-header>
+    <hello></hello>
+    <my-footer></my-footer>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-};
+  import MyHeader from './components/MyHeader';
+  import Hello from './components/Hello';
+  import MyFooter from './components/MyFooter';
+
+  export default {
+    name: 'app',
+    components: {
+      MyHeader,
+      Hello,
+      MyFooter,
+    },
+  };
 </script>
 
 <style>

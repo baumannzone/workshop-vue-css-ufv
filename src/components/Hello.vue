@@ -1,34 +1,80 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="mb-4">{{ msg }}</h1>
+      </div>
+    </div>
+    <div class="row justify-content-start align-items-stretch">
+      <card v-for="(card, index) in cards" :key="index" :data="card"></card>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'hello',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    };
-  },
-};
+  import Card from './Card';
+
+  export default {
+    name: 'hello',
+    components: {
+      Card,
+    },
+    mounted() {
+      // Fake GET request
+      this.cards = [
+        {
+          gifurl: 'http://tclhost.com/bxRvNRA.gif',
+          title: 'When the senior developer meets the new guy',
+        },
+        {
+          gifurl: 'http://tclhost.com/F7GSdyO.gif',
+          title: 'Easy workaround vs correct implementation',
+        },
+        {
+          gifurl: 'http://tclhost.com/hBBTrnd.gif',
+          title: 'When they tell me we have to rewrite the entire app to make it mobile-friendly',
+        },
+        {
+          gifurl: 'http://tclhost.com/10RB6RG.gif',
+          title: 'After an all night coding session',
+        },
+        {
+          gifurl: 'http://tclhost.com/SEFNMY7.gif',
+          title: 'How I imagine previous programmers who built the system on which I\u2019m currently working',
+        },
+        {
+          gifurl: 'http://tclhost.com/usBraPq.gif',
+          title: 'Opening and launching a very old project of mine',
+        },
+        {
+          gifurl: 'http://tclhost.com/nyzsQKk.gif',
+          title: 'After giving my project to QA for testing',
+        },
+        {
+          gifurl: 'http://tclhost.com/MEV3bSv.gif',
+          title: 'Testing live on production',
+        },
+        {
+          gifurl: 'http://tclhost.com/27De20k.gif',
+          title: 'When a senior developer remembers his time writing COBOL',
+        },
+        {
+          gifurl: 'http://tclhost.com/NAnyq7x.gif',
+          title: 'When all tests pass, except the very last one.',
+        },
+        {
+          gifurl: 'http://tclhost.com/ON56qsr.gif',
+          title: 'When I see a merge request without any conflict',
+        },
+      ];
+    },
+    data() {
+      return {
+        msg: 'Nice pictures',
+        cards: null,
+      };
+    },
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
